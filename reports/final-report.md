@@ -1,47 +1,28 @@
 # Smart Campus Room Availability Checker
 
-Practice #12 · Submission #13  
-Tursynmamet Ayan · 24B032074 · Tuesday, 13:00–16:00
+Practice 12 · Submission 13 · Tursynmamet Ayan · 24B032074 · Tuesday 13:00–16:00
 
-## Baseline and contract
+## Implementations
 
-The starting repository revision was `e1930bc015289aa10281c9a2a08ea2d6d6b9a5db`. Study Room A is fictional. The shared clock is fixed at 09:00, and the only booking is 10:00–11:00. See [shared requirements](requirements.md) for the user story, inputs, outputs and AC1–AC6.
+[HTML demo](https://ayan001-git.github.io/smart-campus-practice-13/) · [Appsmith demo](https://smart-campus-practice13.appsmith.com/app/smart-campus-practice-12/page1-6b0582ccb9542a02bf24e57e?environment=production) · [Native Appsmith export](../low-code/Smart-Campus-Appsmith.json)
 
-The code-based form now delegates validation to its existing check function so durations 0 and 121 produce feedback in the result panel. The booking rules and fixture are unchanged.
+The starting repository revision was e1930bc015289aa10281c9a2a08ea2d6d6b9a5db. Both checkers use the same fictional day, demo clock of 09:00 and booking of 10:00–11:00. [Contract and acceptance criteria](requirements.md). The HTML form delegates validation to its submission handler so invalid durations produce visible feedback. In Appsmith, StartInput, DurationInput and BlockedSwitch feed JSObject1, adapted from RoomChecker.js. The text widget updates the decision and booking directly when an input changes. The deployed object source is [JSObject1.js](../low-code/JSObject1.js).
 
-## Acceptance checks
+## Observed results
 
-The code-based submission handler was exercised in Node.js with a minimal DOM stub. The Appsmith JS object's `check` method was evaluated independently in Node.js. Appsmith sign-in did not complete, so the Appsmith editor and deployed UI remain unverified.
+Each form was exercised in Cloud Browser on its published URL. The booking displayed at the start and after each of T1–T7 was 10:00–11:00. Both implementations passed all eight checks. [Inputs and observed results](shared-tests.csv) · [screenshots of both interfaces and every input case](../evidence/) · [local test output](local-test-results.txt). The HTML baseline screenshot shows the deployed form before entering the test cases. An image of the earlier repository revision was not recorded.
 
-| Test | Expected | Observed in HTML handler | Observed in isolated RoomChecker.js | Appsmith UI |
-|---|---|---|---|---|
-| T1 · 11:30, 30 min | Available | Available | Available | Pending |
-| T2 · 10:30, 60 min | Unavailable, overlap | Unavailable, overlap | Unavailable, overlap | Pending |
-| T3 · 11:30, 30 min, blocked | Unavailable, blocked | Unavailable, blocked | Unavailable, blocked | Pending |
-| T4 · 0 min | Validation error | Whole number between 1 and 120 | Whole number between 1 and 120 | Pending |
-| T5 · 121 min | Validation error | Maximum 120 minutes | Maximum 120 minutes | Pending |
-| T6 · 08:30 | Validation error | Start must be later than 09:00 | Start must be after 09:00 | Pending |
-| T7 · 11:00, 60 min | Available | Available | Available | Pending |
-| T8 · Run all checks | Booking unchanged | Fixture remained 10:00–11:00 | Fixture remained 10:00–11:00 | Pending |
-
-Reproduce the local checks from the repository root with `node tests/shared-checks.cjs`. See the [captured output](local-test-results.txt).
-
-## Comparison
-
-| Criterion | Code-based HTML | Appsmith |
+| Criterion | HTML | Appsmith |
 |---|---|---|
-| Functional evidence | 8/8 local handler checks | 8/8 isolated JS checks. Appsmith UI pending. |
-| Setup, implementation, debugging and testing time | Historical phase durations unavailable | Platform work pending. Phase durations unavailable. |
-| Unresolved work | Browser screenshots and published URL to verify | Widgets, bindings, runtime tests, screenshots, deployment and native export pending |
-| Customization | Direct control of HTML, CSS and validation | Visual widgets and JS Object bindings planned in [setup](../low-code/SETUP.md) |
-| Security | Fixed fixture, text-only output and no connectors | Script checks inputs. Roles, sharing and connectors remain to verify in Appsmith. |
-| Versioning and portability | Git diffs and portable static HTML | JS source tracked in Git. Appsmith export pending. |
-| Ongoing cost | Static prototype has no service dependencies | No subscription purchased. Current workspace plan capabilities remain to verify. |
+| Functional coverage | 8/8, submitted through the form | 8/8, reactive widget bindings |
+| Build and repair time | Phase timings unavailable | Phase timings unavailable |
+| Customization | Direct control of form, responsive CSS and validation messages | Drag-and-drop widgets plus JS for interval logic |
+| Review and portability | Single HTML file, readable Git diff, runs offline | Native JSON and extracted JS versioned in Git. Editor and runtime depend on Appsmith |
+| Security | Text-only result rendering, no external connector | Public viewing enabled, fixed fictional schedule, no datasource in export |
+| Cost observed | No purchase for the demo | Workspace showed an active trial. No subscription purchased. Long-term plan limits unverified |
 
-For this exercise I recommend the HTML version based on the available evidence. Its full implementation is already reviewable in Git, and it needs no application platform to run. A comparison of actual Appsmith setup and maintenance effort requires completing the Appsmith integration first.
+No functional failures remained in the eight defined tests. Unmeasured setup, implementation, debugging and test durations prevent a speed comparison. For this classroom checker I recommend HTML because the complete runnable implementation is a single portable file. Appsmith is useful when collaborators want to change controls visually.
 
 ## Security and AI use
 
-The HTML handler writes the result via textContent. Both scripts use a fixed fictional fixture and do not construct SQL or send booking data to a connector. No third-party scanning was performed. The HTML has no external runtime libraries. Appsmith platform updates remain the provider's responsibility, while workspace owners are responsible for access review and checking any added connectors or libraries. Runtime checks on deployed UIs and an Appsmith permissions review are pending. See the [security checklist](security-checklist.md).
-
-ChatGPT Codex was used to inspect the assignment, diagnose native form validation and rerun shared scenarios in Node.js. Exact model version is unavailable. The Appsmith sign-in attempt ended at Google authentication. No Appsmith publication, export, or screenshots were obtained.
+[Security review](security-checklist.md). ChatGPT Codex helped adapt the rule engine, configure Appsmith widgets, exercise both deployed forms and compare results against the fixed acceptance cases. Local tests initially covered the logic only. Browser tests subsequently verified the user-visible decisions and preserved schedule. Exact historical model and platform version identifiers for all work sessions are unavailable.

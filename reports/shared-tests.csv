@@ -1,9 +1,9 @@
-Test,Start,Duration,Blocked,Expected,Code-based logic,Low-code Appsmith runtime
-T1,11:30,30,false,Available,PASS,NOT TESTED
-T2,10:30,60,false,Unavailable overlap,PASS,NOT TESTED
-T3,11:30,30,true,Unavailable blocked,PASS,NOT TESTED
-T4,11:30,0,false,Invalid duration,PASS,NOT TESTED
-T5,11:30,121,false,Invalid duration,PASS,NOT TESTED
-T6,08:30,30,false,Invalid past start,PASS,NOT TESTED
-T7,11:00,60,false,Available endpoint touch,PASS,NOT TESTED
-T8,repeat checks,n/a,varied,Booking fixture unchanged,PASS,NOT TESTED
+Test,Start,Duration,Blocked,Expected,Observed on GitHub Pages,Observed in deployed Appsmith
+T1,11:30,30,false,Available,Available,Available
+T2,10:30,60,false,Unavailable overlap,Unavailable: overlap,Unavailable: overlap
+T3,11:30,30,true,Unavailable blocked,Unavailable: blocked,Unavailable: blocked
+T4,11:30,0,false,Invalid duration,Validation error: whole number,Validation error: whole number
+T5,11:30,121,false,Invalid duration,Validation error: exceeds 120,Validation error: exceeds 120
+T6,08:30,30,false,Invalid past start,Validation error: after 09:00,Validation error: after 09:00
+T7,11:00,60,false,Available endpoint touch,Available,Available
+T8,repeat checks,n/a,varied,Booking fixture unchanged,10:00–11:00 unchanged,10:00–11:00 unchanged
