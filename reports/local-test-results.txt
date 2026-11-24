@@ -1,0 +1,8 @@
+T1 PASS | Available | HTML: Study Room A is available for that interval. | JS: Study Room A is available.
+T2 PASS | Unavailable | HTML: This interval overlaps the existing 10:00–11:00 booking. | JS: The slot overlaps booking 10:00–11:00.
+T3 PASS | Unavailable | HTML: Study Room A is blocked. | JS: Study Room A is blocked.
+T4 PASS | Validation error | HTML: Duration must be a whole number between 1 and 120. | JS: Duration must be a whole number between 1 and 120.
+T5 PASS | Validation error | HTML: Duration cannot exceed 120 minutes. | JS: Duration must not exceed 120 minutes.
+T6 PASS | Validation error | HTML: Start must be later than 09:00. | JS: Start time must be after 09:00.
+T7 PASS | Available | HTML: Study Room A is available for that interval. | JS: Study Room A is available.
+T8 PASS | Booking 10:00–11:00 unchanged in both implementations

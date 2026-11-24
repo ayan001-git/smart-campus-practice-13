@@ -24,6 +24,8 @@ The code-based submission handler was exercised in Node.js with a minimal DOM st
 | T7 · 11:00, 60 min | Available | Available | Available | Pending |
 | T8 · Run all checks | Booking unchanged | Fixture remained 10:00–11:00 | Fixture remained 10:00–11:00 | Pending |
 
+Reproduce the local checks from the repository root with `node tests/shared-checks.cjs`. See the [captured output](local-test-results.txt).
+
 ## Comparison
 
 | Criterion | Code-based HTML | Appsmith |
