@@ -15,6 +15,7 @@ The standalone code-based demonstration is in [index.html](index.html). It is an
 - Give understandable errors for invalid values.
 
 ## Results and limitations
+See the [final report](reports/final-report.md) for observed case-by-case results and outstanding submission evidence.
 
 The previously exported React/TypeScript baseline passed **63/63** headless checks. The updated start/duration code adapter passed **8/8** shared logic checks locally. The Appsmith JavaScript object passed **8/8** isolated script checks, **not in the Appsmith platform**. Platform app creation, actual test screenshots, public Appsmith URL and platform export are **pending**. Code-based screenshot and report available separately in the chat artifact. Unmeasured work time is not invented.
 
