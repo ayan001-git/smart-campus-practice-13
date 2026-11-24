@@ -1,0 +1,9 @@
+Test,Start,Duration,Blocked,Expected,Code-based logic,Low-code Appsmith runtime
+T1,11:30,30,false,Available,PASS,NOT TESTED
+T2,10:30,60,false,Unavailable overlap,PASS,NOT TESTED
+T3,11:30,30,true,Unavailable blocked,PASS,NOT TESTED
+T4,11:30,0,false,Invalid duration,PASS,NOT TESTED
+T5,11:30,121,false,Invalid duration,PASS,NOT TESTED
+T6,08:30,30,false,Invalid past start,PASS,NOT TESTED
+T7,11:00,60,false,Available endpoint touch,PASS,NOT TESTED
+T8,repeat checks,n/a,varied,Booking fixture unchanged,PASS,NOT TESTED
